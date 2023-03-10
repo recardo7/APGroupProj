@@ -1,33 +1,61 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="student") //Table name in database
 public class Student {
-	private String id;
-	private String fName;
-	private String lName;
+	@Id //This is important if multiple objects are to be saved to the database at one time
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "studentId")
+	private int studentId;
+	
+	@Column(name = "firstName")
+	private String firstName;
+	
+	@Column(name = "lastName")
+	private String lastName;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name ="contactNum")
 	private String contactNum;
+	
+	@Column(name = "issueType")
 	private String issueType;
+	
+	@Column(name = "issueDetails")
 	private String issueDetails;
 	
+	public void student() {///
+		
+	}
+	
 	//Primary constructor
-	public Student(String id, String fName, String lName, String email, String contactNum, String issueType,
+	public Student(int studentId, String firstName, String lastName, String email, String contactNum, String issueType,
 			String issueDetails) {
 		super();
-		this.id = id;
-		this.fName = fName;
-		this.lName = lName;
+		this.studentId =studentId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.contactNum = contactNum;
 		this.issueType = issueType;
 		this.issueDetails = issueDetails;
 	}
+	
 	//Copy constructor
 	public Student(Student student) {
 		super();
-		this.id = student.id;
-		this.fName = student.fName;
-		this.lName = student.lName;
+		this.studentId = student.studentId;
+		this.firstName = student.firstName;
+		this.lastName = student.lastName;
 		this.email = student.email;
 		this.contactNum = student.contactNum;
 		this.issueType = student.issueType;
@@ -37,9 +65,9 @@ public class Student {
 	//Default constructor
 	public Student() {
 		super();
-		this.id = "";
-		this.fName = "";
-		this.lName = "";
+		this.studentId = 0;
+		this.firstName = "";
+		this.lastName = "";
 		this.email = "";
 		this.contactNum = "";
 		this.issueType = "";
@@ -47,23 +75,23 @@ public class Student {
 	}
 	
 	//Getters and setters
-	public String getId() {
-		return id;
+	public int getId() {
+		return studentId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(int studentId) {
+		this.studentId =studentId;
 	}
-	public String getfName() {
-		return fName;
+	public String getfirstName() {
+		return firstName;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setfirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getlName() {
-		return lName;
+	public String getlastName() {
+		return lastName;
 	}
-	public void setlName(String lName) {
-		this.lName = lName;
+	public void setlastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -93,8 +121,8 @@ public class Student {
 	//toString method
 	@Override
 	public String toString() {
-		return "Student id : " + id + 
-			"\nName : " + fName + " " + lName + 
+		return "Students id : " +studentId + 
+			"\nName : " + firstName + " " + lastName + 
 			"\nEmail : " + email + 
 			"\nContact number : "+ contactNum + 
 			"\nType of issue: " + issueType + 
