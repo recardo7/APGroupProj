@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 
 
-
+//connection
 
 public class Dbconn {
         private static Connection conn=null;
